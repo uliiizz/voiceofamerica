@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="TechPractice.Site1" %>
+
+<!DOCTYPE html>
+ <html>
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+<script src="Index.js"></script> 
+<link rel="stylesheet" href="./style.css" />
+<body>
+    <form id="form1" runat="server">
+        <header data-role="Header" class="home-header">
+            <img src="public/screenshot%202024-03-08%20223759-200h.png"
+            alt="image"
+            class="home-image" />
+            <div class="home-nav">
+                <nav class="navigation-links-nav navigation-links-root-class-name10">
+                    <div class="navigation-links">Statistics </div>
+                    <div class="navigation-links"> Link Archive</div>
+                    <div class="home-btn-group">
+                         <%-- REGISTRATION+LOGIN BUTTONS --%>
+                            <asp:Button ID="b_logIn" runat="server" Text="LogIn" class="home-login button" OnClick="LogIn"/>
+                            <asp:Button ID="b_register" runat="server" Text="Register" OnClick="Registration" class="button"/>
+                            <asp:Button ID="b_logOut" runat="server" Text="Log Out" Visible="false" OnClick="LogOut" class="home-login button"/>
+                            <asp:Label ID="l_username" runat="server" Text=""></asp:Label>
+                    </div>
+                </nav>
+            </div>
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <asp:Timer ID="Timer1" runat="server" Interval="100" ontick="Timer1_Tick"></asp:Timer>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:Label ID="Label1" runat="server" Font-Bold="True"></asp:Label>
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick"></asp:AsyncPostBackTrigger>
+                </Triggers>
+            </asp:UpdatePanel>
+        </header>
+
+        <asp:ContentPlaceHolder id="CPH1" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+    <footer class="home-footer">
+        <span class="home-text5">
+        TechPractice 2024
+        </span>
+    </footer>
+</body>
+</html>
